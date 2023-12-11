@@ -12,9 +12,12 @@ import java.util.Scanner;
 // retreive weather data from API - this backend logic will fetch the latest weather
 // data from the external API and return it. The GUI will
 // display this data to the user
+
 public class WeatherApp {
+    
     // fetch weather data for given location
     public static JSONObject getWeatherData(String locationName){
+        
         // get location coordinates using the geolocation API
         JSONArray locationData = getLocationData(locationName);
 
@@ -24,17 +27,10 @@ public class WeatherApp {
         double longitude = (double) location.get("longitude");
 
         // build API request URL with location coordinates
-//        String urlString = "https://api.open-meteo.com/v1/forecast?" +
-//                "latitude=" + latitude + "&longitude=" + longitude +
-//                "&hourly=temperature_2m,relativehumidity_2m,weathercode,windspeed_10m&timezone=Asia%2FSingapore";
 
         String urlString = "https://api.open-meteo.com/v1/forecast?" +
                 "latitude=" + latitude + "&longitude=" + longitude +
                 "&hourly=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Asia%2FBangkok";
-
-//        "https://api.open-meteo.com/v1/forecast?" +
-//                "latitude=" + latitude "&longitude=" + longitude +
-//                "&hourly=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Asia%2FSingapore";
 
         try{
             // call api and get response
